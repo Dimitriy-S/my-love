@@ -1,0 +1,97 @@
+/* Убираем отступы и задаем правильные размеры */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Фон страницы с радужной анимацией */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    flex-direction: column;
+    background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+    background-size: 400% 400%;
+    animation: rainbowBG 8s infinite alternate ease-in-out;
+}
+
+/* Анимация переливания фона */
+@keyframes rainbowBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Контейнер */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Заголовок */
+h1 {
+    font-size: 2rem;
+    color: white;
+    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.8);
+    margin-bottom: 50px;
+}
+
+/* Сердце */
+.heart {
+    width: 100px;
+    height: 100px;
+    background: red;
+    position: relative;
+    transform: rotate(-45deg);
+    animation: heartbeat 1.5s infinite, rainbowHeart 4s infinite alternate;
+}
+
+/* Две круглые части */
+.heart:before,
+.heart:after {
+    content: "";
+    width: 100px;
+    height: 100px;
+    background: red;
+    border-radius: 50%;
+    position: absolute;
+}
+
+/* Верхний круг */
+.heart:before {
+    top: -50px;
+    left: 0;
+}
+
+/* Левый круг */
+.heart:after {
+    left: 50px;
+    top: 0;
+}
+
+/* Анимация биения */
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1) rotate(-45deg); }
+    50% { transform: scale(1.2) rotate(-45deg); }
+}
+
+/* Анимация радужного цвета для сердца */
+@keyframes rainbowHeart {
+    0% { background: red; }
+    16% { background: orange; }
+    33% { background: yellow; }
+    50% { background: green; }
+    66% { background: blue; }
+    83% { background: indigo; }
+    100% { background: violet; }
+}
+
+/* Радужный цвет для круглых частей сердца */
+.heart:before,
+.heart:after {
+    animation: rainbowHeart 4s infinite alternate;
+}
